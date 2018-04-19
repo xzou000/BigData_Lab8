@@ -16,7 +16,7 @@ def main(sc):
 	rest = sc.textFile(NYU_rest, use_unicode=False).cache()	
 	rest_cuisin = rest.mapPartitionsWithIndex(extractREST)
 	result=rest_cuisin.reduceByKey(lambda x,y: x+y).sortBy(lambda x: -x[1])
-	print result
+	print result.take(10)
 	
 if __name__ == "__main__":
 	sc = SparkContext()
