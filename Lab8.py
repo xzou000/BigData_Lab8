@@ -1,4 +1,4 @@
-import pyspark from SparkContext
+from pyspark import SparkContext
 
 	
 def extractREST(index, lines):
@@ -12,6 +12,7 @@ def extractREST(index, lines):
 		
 def main(sc):
 	NYU_rest='nyc_restaurants.csv'
+	
 	rest = sc.textFile(NYU_rest, use_unicode=False).cache()	
 	rest_cuisin = rest.mapPartitionsWithIndex(extractREST)
 	result=rest_cuisin.reduceByKey(lambda x,y: x+y).sortBy(lambda x: -x[1])
