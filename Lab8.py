@@ -1,4 +1,3 @@
-'''
 from pyspark import SparkContext
 def extractREST(index, lines):
     import csv
@@ -31,3 +30,4 @@ if __name__ == "__main__":
 	df = df.groupBy(['CUISINE DESCRIPTION']).count()
 	df = df.orderBy('count', ascending = False)
 	print df.show()
+'''
