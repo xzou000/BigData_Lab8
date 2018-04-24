@@ -30,4 +30,4 @@ if __name__ == "__main__":
 							   header=True, inferSchema=True)
 	df = df.groupBy(['CUISINE DESCRIPTION']).count()
 	df = df.orderBy('count', ascending = False)
-	df.show()
+	print df.show()
